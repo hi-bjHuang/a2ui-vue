@@ -1,6 +1,6 @@
 {
-  "name": "a2ui-vue",
-  "version": "0.1.0",
+  "name": "@hi-bjhuang/a2ui-vue",
+  "version": "0.1.1",
   "license": "Apache-2.0",
   "description": "Vue renderer for A2UI (Agent-to-User Interface)",
   "homepage": "https://a2ui.org/",
@@ -42,8 +42,7 @@
     "build:types": "vue-tsc --declaration --emitDeclarationOnly --outDir dist --noEmit false",
     "dev": "vite build --watch",
     "prepare": "npm run build",
-    "typecheck": "vue-tsc --noEmit",
-    "demo": "cd a2ui_explorer && vite"
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@a2ui/markdown-it": "^0.0.4",
