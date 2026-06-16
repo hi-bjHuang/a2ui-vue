@@ -32,7 +32,8 @@
         "types": "./dist/v0_9/index.d.cts",
         "default": "./dist/v0_9/index.cjs"
       }
-    }
+    },
+    "./style.css": "./dist/a2ui-vue.css"
   },
   "files": ["dist"],
   "sideEffects": ["*.css"],
