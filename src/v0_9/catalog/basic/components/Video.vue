@@ -8,7 +8,14 @@ const p = defineProps<{
   context: unknown;
 }>();
 useBasicCatalogStyles();
-const style = computed(() => ({...getWeightStyle(p.props.weight), display: 'block', width: '100%'}));
+const style = computed(() => ({
+  ...getWeightStyle(p.props.weight),
+  display: 'block',
+  width: '100%',
+  borderRadius: 'var(--a2ui-media-border-radius, 12px)',
+  background: '#111827',
+  boxShadow: 'var(--a2ui-media-box-shadow, 0 8px 22px rgba(20, 24, 38, 0.18))',
+}));
 </script>
 
 <template>

@@ -9,5 +9,5 @@ defineProps<{
 </script>
 
 <template>
-  <DeferredChild :surface="surface" id="root" basePath="/" />
+  <DeferredChild :surface="surface" id="root" class="a2ui-surface" basePath="/" />
 </template>

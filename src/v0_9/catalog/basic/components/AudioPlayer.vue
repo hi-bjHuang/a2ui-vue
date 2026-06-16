@@ -14,6 +14,15 @@ useBasicCatalogStyles();
     :src="p.props.url"
     :autoplay="p.props.autoPlay"
     :controls="p.props.controls !== false"
-    style="width: 100%"
+    class="a2ui-audio"
   />
 </template>
+
+<style scoped>
+.a2ui-audio {
+  width: 100%;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.84);
+  box-shadow: 0 1px 2px rgba(35, 40, 58, 0.08);
+}
+</style>

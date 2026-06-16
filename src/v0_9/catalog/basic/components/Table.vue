@@ -25,35 +25,40 @@ const striped = computed(() => p.props.striped === true);
 
 const tableStyle = computed(() => ({
   width: '100%',
-  borderCollapse: 'collapse' as const,
-  fontSize: 'var(--a2ui-font-size-body, 0.9rem)',
-  borderRadius: '10px',
+  borderCollapse: 'separate' as const,
+  borderSpacing: '0',
+  fontSize: 'var(--a2ui-font-size-body, 14px)',
+  borderRadius: '12px',
   overflow: 'hidden',
   ...getWeightStyle(p.props.weight),
 }));
 
 const thStyle = (col: {width?: string}) => ({
-  padding: '10px 14px',
+  padding: '11px 14px',
   textAlign: 'left' as const,
-  fontWeight: 600,
-  fontSize: '0.82rem',
-  letterSpacing: '0.03em',
-  color: '#6b7280',
-  background: '#f9fafb',
-  borderBottom: '1px solid #e5e7eb',
-  ...(bordered.value ? {border: '1px solid #e5e7eb'} : {}),
+  fontWeight: 740,
+  fontSize: '12px',
+  letterSpacing: '0',
+  color: 'var(--a2ui-color-muted, #6f7587)',
+  background: 'rgba(246, 247, 251, 0.88)',
+  borderBottom: '1px solid var(--a2ui-color-border, #e5e7eb)',
+  ...(bordered.value ? {borderRight: '1px solid var(--a2ui-color-border, #e5e7eb)'} : {}),
   ...(col.width ? {width: col.width} : {}),
   whiteSpace: 'nowrap' as const,
-  textTransform: 'uppercase' as const,
 });
 
 const tdStyle = (rowIndex: number) => ({
-  padding: '10px 14px',
+  padding: '11px 14px',
   verticalAlign: 'top' as const,
-  fontSize: '0.9rem',
-  color: '#111',
-  ...(bordered.value ? {border: '1px solid #e5e7eb'} : {borderBottom: '1px solid #f3f4f6'}),
-  ...(striped.value && rowIndex % 2 === 1 ? {background: '#f9fafb'} : {}),
+  fontSize: '14px',
+  color: 'var(--a2ui-color-on-surface, #111)',
+  background: striped.value && rowIndex % 2 === 1 ? 'rgba(248, 249, 253, 0.62)' : 'rgba(255, 255, 255, 0.58)',
+  ...(bordered.value
+    ? {
+        borderRight: '1px solid var(--a2ui-color-border, #e5e7eb)',
+        borderBottom: '1px solid var(--a2ui-color-border, #e5e7eb)',
+      }
+    : {borderBottom: '1px solid rgba(229,231,235,0.72)'}),
 });
 
 const cellValue = (row: unknown, key: string): string => {
@@ -66,7 +71,7 @@ const cellValue = (row: unknown, key: string): string => {
 </script>
 
 <template>
-  <div style="overflow-x: auto; width: 100%; border-radius: 10px; border: 1px solid #e5e7eb;">
+  <div class="table-shell">
     <table :style="tableStyle">
       <thead>
         <tr>
@@ -79,8 +84,8 @@ const cellValue = (row: unknown, key: string): string => {
         <tr v-if="rows.length === 0">
           <td
             :colspan="p.props.columns.length"
-            style="text-align: center; padding: 24px 16px; color: #9ca3af; font-size: 0.9rem;"
-          >无数据</td>
+            class="table-empty"
+          >No data</td>
         </tr>
         <tr v-for="(row, i) in rows" :key="i">
           <td v-for="col in p.props.columns" :key="col.key" :style="tdStyle(i)">
@@ -91,3 +96,22 @@ const cellValue = (row: unknown, key: string): string => {
     </table>
   </div>
 </template>
+
+<style scoped>
+.table-shell {
+  overflow-x: auto;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--a2ui-color-border, #e5e7eb);
+  background: rgba(255,255,255,0.58);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.78);
+}
+
+.table-empty {
+  text-align: center;
+  padding: 24px 16px;
+  color: var(--a2ui-color-subtle, #9399aa);
+  font-size: 14px;
+  font-weight: 650;
+}
+</style>

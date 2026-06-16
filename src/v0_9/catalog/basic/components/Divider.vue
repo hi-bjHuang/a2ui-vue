@@ -16,7 +16,7 @@ useBasicCatalogStyles();
 <style scoped>
 .a2ui-divider {
   border: none;
-  border-top: 1px solid #e5e7eb;
-  margin: 16px 0;
+  border-top: 1px solid var(--a2ui-color-border, #e5e7eb);
+  margin: 12px 0;
 }
 </style>

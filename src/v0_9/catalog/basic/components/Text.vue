@@ -31,6 +31,6 @@ const isCaption = computed(() => p.props.variant === 'caption')
 </script>
 
 <template>
-  <span v-if="isCaption" :style="style" v-html="html ?? markdownText" />
-  <div v-else :style="style" v-html="html ?? markdownText" />
+  <span v-if="isCaption" class="a2ui-text a2ui-caption" :style="style" v-html="html ?? markdownText" />
+  <div v-else class="a2ui-text" :style="style" v-html="html ?? markdownText" />
 </template>

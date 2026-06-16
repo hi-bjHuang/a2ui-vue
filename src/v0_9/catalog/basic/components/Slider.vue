@@ -25,24 +25,25 @@ useBasicCatalogStyles();
 </template>
 
 <style scoped>
-.slider-host { display: flex; flex-direction: column; gap: 6px; }
-.slider-label { font-size: 0.875rem; font-weight: 500; color: #374151; }
+.slider-host { display: flex; flex-direction: column; gap: 7px; }
+.slider-label { font-size: 12px; font-weight: 700; color: var(--a2ui-color-muted, #6f7587); }
 input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
   height: 5px;
   border-radius: 9999px;
-  background: #e5e7eb;
+  background: linear-gradient(90deg, var(--a2ui-color-primary, #6d4df2), #d9ddea);
   outline: none;
-  accent-color: #111827;
+  accent-color: var(--a2ui-color-primary, #6d4df2);
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px; height: 18px;
   border-radius: 50%;
-  background: #111827;
+  background: #fff;
+  border: 5px solid var(--a2ui-color-primary, #6d4df2);
   cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  box-shadow: 0 2px 8px rgba(91, 57, 222, 0.28);
 }
-.slider-value { font-size: 0.875rem; color: #6b7280; text-align: right; }
+.slider-value { font-size: 12px; font-weight: 700; color: var(--a2ui-color-subtle, #9399aa); text-align: right; }
 </style>

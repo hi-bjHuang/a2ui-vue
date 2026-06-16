@@ -23,20 +23,21 @@ useBasicCatalogStyles();
 
 <style scoped>
 .dti-host { display: flex; flex-direction: column; gap: 6px; }
-.dti-label { font-size: 0.875rem; font-weight: 500; color: #374151; }
+.dti-label { font-size: 12px; font-weight: 700; color: var(--a2ui-color-muted, #6f7587); }
 .dti-input {
-  padding: 10px 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
+  padding: 9px 12px;
+  border: 1px solid var(--a2ui-color-border, #d1d5db);
+  border-radius: 10px;
   font-family: inherit;
-  font-size: 0.9rem;
-  color: #111;
-  background: #fff;
+  font-size: 14px;
+  color: var(--a2ui-color-on-surface, #111);
+  background: var(--a2ui-color-surface-strong, #fff);
   outline: none;
   transition: border-color 0.15s, box-shadow 0.15s;
+  box-shadow: inset 0 1px 2px rgba(35, 40, 58, 0.05);
 }
 .dti-input:focus {
-  border-color: #6b7280;
-  box-shadow: 0 0 0 3px rgba(107,114,128,0.12);
+  border-color: var(--a2ui-color-primary, #6d4df2);
+  box-shadow: 0 0 0 3px var(--a2ui-color-primary-soft, rgba(109,77,242,0.11));
 }
 </style>

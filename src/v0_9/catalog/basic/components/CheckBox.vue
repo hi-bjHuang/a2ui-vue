@@ -20,10 +20,10 @@ useBasicCatalogStyles();
 .cb-host { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
 .cb-host input[type="checkbox"] {
   width: 18px; height: 18px;
-  border-radius: 4px;
-  accent-color: #111827;
+  border-radius: 6px;
+  accent-color: var(--a2ui-color-primary, #6d4df2);
   cursor: pointer;
   flex-shrink: 0;
 }
-.cb-label { font-family: inherit; font-size: 0.9rem; color: #374151; }
+.cb-label { font-family: inherit; font-size: 14px; font-weight: 600; color: #3a4054; }
 </style>
