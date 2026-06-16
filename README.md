@@ -5,7 +5,7 @@ Vue renderer for A2UI.
 ## Install from GitHub
 
 ```bash
-npm install github:your-name/a2ui-vue
+npm install github:hi-bjHuang/a2ui-vue
 ```
 
 ## Usage

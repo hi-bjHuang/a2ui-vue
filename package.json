@@ -6,7 +6,7 @@
   "homepage": "https://a2ui.org/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-name/a2ui-vue.git"
+    "url": "git+https://github.com/hi-bjHuang/a2ui-vue.git"
   },
   "type": "module",
   "main": "./dist/index.cjs",
