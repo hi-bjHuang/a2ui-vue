@@ -42,6 +42,11 @@ const classes = () => {
   min-height: 36px;
   box-shadow: 0 1px 2px rgba(35, 40, 58, 0.06), inset 0 1px 0 rgba(255,255,255,0.85);
 }
+.a2ui-button :deep(.a2ui-text),
+.a2ui-button :deep(.a2ui-caption),
+.a2ui-button :deep(.a2ui-text :where(h1, h2, h3, h4, h5, h6, p, strong, b, em, span)) {
+  color: inherit;
+}
 .a2ui-button:hover:not(:disabled) {
   background: var(--a2ui-button-hover-background, #f3f4f6);
   border-color: var(--a2ui-color-border-strong, #c5cad6);
@@ -58,9 +63,10 @@ const classes = () => {
 }
 .a2ui-button--primary {
   background: var(--a2ui-button-primary-background, #111827);
-  color: var(--a2ui-button-primary-color, #fff);
+  color: var(--a2ui-button-primary-color, #fff) !important;
   border-color: transparent;
   box-shadow: 0 10px 20px rgba(91, 57, 222, 0.24), inset 0 1px 0 rgba(255,255,255,0.26);
+  text-shadow: 0 1px 1px rgba(18, 12, 55, 0.28);
 }
 .a2ui-button--primary:hover:not(:disabled) {
   background: var(--a2ui-button-primary-hover-background, #374151);

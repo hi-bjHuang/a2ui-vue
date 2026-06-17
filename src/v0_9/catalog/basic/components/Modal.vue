@@ -10,6 +10,13 @@ const p = defineProps<{
 useBasicCatalogStyles();
 
 const isOpen = ref(false);
+
+const handleBodyClick = (event: MouseEvent) => {
+  const target = event.target as HTMLElement | null;
+  if (target?.closest('.a2ui-button')) {
+    isOpen.value = false;
+  }
+};
 </script>
 
 <template>
@@ -23,7 +30,7 @@ const isOpen = ref(false);
           <div class="modal-close-row">
             <button class="modal-close" @click="isOpen = false">&times;</button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" @click="handleBodyClick">
             <component :is="p.props.content ? p.buildChild(p.props.content) : null" />
           </div>
         </div>
