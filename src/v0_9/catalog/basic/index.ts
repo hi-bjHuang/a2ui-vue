@@ -1,4 +1,4 @@
-import {Catalog} from '@a2ui/web_core/v0_9';
+import {Catalog, CommonSchemas} from '@a2ui/web_core/v0_9';
 import {BASIC_FUNCTIONS} from '@a2ui/web_core/v0_9/basic_catalog';
 import {z} from 'zod';
 import type {VueComponentImplementation} from '../../adapter';
@@ -22,6 +22,7 @@ import ChoicePickerVue from './components/ChoicePicker.vue';
 import SliderVue from './components/Slider.vue';
 import DateTimeInputVue from './components/DateTimeInput.vue';
 import TableVue from './components/Table.vue';
+import FileUploadVue from './components/FileUpload.vue';
 
 import {
   TextApi, ImageApi, IconApi, VideoApi, AudioPlayerApi,
@@ -56,6 +57,32 @@ const TableApi = {
   }),
 };
 
+export const FileUploadApi = {
+  name: 'FileUpload',
+  schema: z
+    .object({
+      label: CommonSchemas.DynamicString.describe('The label shown above the file upload control.').optional(),
+      description: CommonSchemas.DynamicString.describe('Helper text shown inside the upload area.').optional(),
+      buttonLabel: CommonSchemas.DynamicString.describe('The primary text shown in the upload area.').optional(),
+      value: CommonSchemas.DynamicValue.describe(
+        'The selected file metadata. When multiple is true, this is an array. When readAs is dataUrl or text, each file also includes a content field.',
+      ).optional(),
+      accept: CommonSchemas.DynamicStringList.describe(
+        'Allowed file types, such as ["image/*", ".pdf"] or MIME types.',
+      ).optional(),
+      multiple: CommonSchemas.DynamicBoolean.describe('Whether users can select more than one file.').optional(),
+      disabled: CommonSchemas.DynamicBoolean.describe('Whether the upload control is disabled.').optional(),
+      maxSizeBytes: CommonSchemas.DynamicNumber.describe('The maximum allowed size for each selected file in bytes.').optional(),
+      readAs: z
+        .enum(['metadata', 'dataUrl', 'text'])
+        .default('metadata')
+        .describe('How much file content to read into the value. metadata stores only serializable file metadata.')
+        .optional(),
+      checks: CommonSchemas.Checkable.shape.checks,
+    })
+    .strict(),
+};
+
 const makeImpl = (api: {name: string; schema: unknown}, component: unknown): VueComponentImplementation => ({
   name: api.name,
   schema: api.schema as VueComponentImplementation['schema'],
@@ -82,6 +109,7 @@ const basicComponents: VueComponentImplementation[] = [
   makeImpl(SliderApi, SliderVue),
   makeImpl(DateTimeInputApi, DateTimeInputVue),
   makeImpl(TableApi, TableVue),
+  makeImpl(FileUploadApi, FileUploadVue),
 ];
 
 export const basicCatalog = new Catalog<VueComponentImplementation>(
@@ -110,6 +138,7 @@ export {
   SliderVue as Slider,
   DateTimeInputVue as DateTimeInput,
   TableVue as Table,
+  FileUploadVue as FileUpload,
 };
 
 export * from './composables/useMarkdownRenderer';
